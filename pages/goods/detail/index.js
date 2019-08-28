@@ -61,7 +61,8 @@ Page({
         commentPage: 1,
         commentLevel: "all",
         commentList: [],
-        ver: t.globalData.ver
+        ver: t.globalData.ver,
+        seckill:""
       },
       favorite: function(t) {
         var a = this,
@@ -108,6 +109,10 @@ Page({
               })
             })
       },
+  store: function (e) {
+    let that = this;
+    t.setCache("merchid", e.currentTarget.dataset.id)
+  },
       comentTap: function(t) {
         var a = this,
           o = t.currentTarget.dataset.type,
@@ -159,6 +164,8 @@ Page({
           r = i.data.diyform;
         if (n > 0 && 0 == s)
           return void a.toast(i, "请选择规格");
+        if (this.data.total > this.data.goodsg.seckillmaxbuy)
+          return void e.alert("改秒杀商品最多可选择" + this.data.goodsg.seckillmaxbuy + "件商品");
         if (r && r.fields.length > 0) {
           if (!o.verify(i, r))
             return;
@@ -181,6 +188,9 @@ Page({
           r = i.data.diyform;
         if (n > 0 && 0 == s)
           return void a.toast(i, "请选择规格");
+   
+        if (this.data.total > this.data.goodsg.seckillmaxbuy)
+          return void e.alert("改秒杀商品最多可选择" + this.data.goodsg.seckillmaxbuy+"件商品");
         if (r && r.fields.length > 0) {
           if (!o.verify(i, r))
             return;
@@ -233,7 +243,8 @@ Page({
                 s.wxParse("wxParseData", "html", t.goods.content, a, "5") }, 1),
               a.setData({
                 show: !0,
-                goods: t.goods
+                goods: t.goods,
+                goodsg:t.g
               }), wx.setNavigationBarTitle({
                 title: t.goods.title || "商品详情"
               }), n = t.goods.hasoption, i.isEmptyObject(t.goods.dispatchprice) || "string" == typeof t.goods.dispatchprice ? a.setData({
@@ -400,6 +411,25 @@ Page({
                   a.getDetail(e)
                 }
               })
+            if (e.taskid){
+              a.seckill(e.taskid, e.roomid, e.timeid)
+              }
+          },
+          // 秒杀
+           seckill: function (taskid,roomid,timeid){
+            var that = this
+             e.get("seckill/get_goods", {
+              taskid: taskid,
+              roomid: roomid,
+              timeid:timeid
+            }, function (res) {
+              setInterval(function () {
+                that.countDown(res.result.time.starttime, res.result.time.endtime, "istime")
+              }, 1e3);
+              that.setData({
+                seckill: res.result
+              })
+            })
           },
           onShow: function() {
             r = [],

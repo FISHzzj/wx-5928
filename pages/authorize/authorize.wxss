@@ -1,6 +1,7 @@
-/* pages/authorize/authorize.wxss */
+container/* pages/authorize/authorize.wxss */
 page{
     height: 100%;
+    background-color:#f5f5f9 ;
 }
 .container{
     background-color: #f5f5f9;

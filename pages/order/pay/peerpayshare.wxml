@@ -1,29 +1,32 @@
 <!--pages/order/pay/peerpayshare.wxml-->
 <view>
-<view style='padding:20rpx;background:#fff'>
-  <view class='xj-header'>
-    <image  src='{{list.member.avatar}}' mode='aspectFit' ></image>
-    <view>{{list.member.nickname}}</view>
-  </view>
-  <view class='xj-bottom'>
-    <view style='display:inline-block;'>已完成 :
-      <text>{{list.rate}}%</text>
+  <view style='padding:20rpx;background:#fff'>
+    <view class='xj-header'>
+      <image src='{{list.member.avatar}}' mode='aspectFit'></image>
+      <view>{{list.member.nickname}}</view>
     </view>
-    <view style='float:right'>还差 :
-      <text> {{list.rate_price}}元</text>
+    <view class='xj-bottom'>
+      <view style='display:inline-block;'>已完成 :
+        <text>{{list.rate}}%</text>
+      </view>
+      <view style='float:right'>还差 :
+        <text> {{list.rate_price}}元</text>
+      </view>
+    </view>
+    <view class='xj-progress'>
+      <progress percent="{{list.rate}}" color="#ff4753" stroke-width="12" />
     </view>
   </view>
-  <view class='xj-progress'>
-   <progress percent="{{list.rate}}" color="#ff4753" stroke-width="12" />
-  </view>
-</view>
   <view class='xj-btn-wai'>
-    <view class='xj-bottom-btn' bindtap='next' data-eno='1'>找小朋友帮忙付款</view>
+    <view class='xj-bottom-btn' bindtap='next' data-eno='1'>找小伙伴帮忙付款</view>
   </view>
-    <view class='view-eno {{eno==0?"hidden":""}}' bindtap="next" data-eno='0'>
-      <image src='http://xcxvip.iiio.top/addons/wx_shop/plugin/app/static/images/123.png' class='image1' mode='aspectFill'></image>
-      <text style="color:#fff;" bindtap='next' data-eno='0'> 快点找人帮你付款吧</text>
-    </view>
-    <view class='view-eno-bg {{eno==0?"hidden":""}}'  bindtap='next' data-eno='0'>
-</view>
+  <view class='view-eno {{eno==0?"hidden":""}}' bindtap="next" data-eno='0'>
+    <image src='http://xcxvip.iiio.top/addons/wx_shop/plugin/app/static/images/123.png' class='image1' mode='aspectFill'></image>
+    <text style="color:#fff;" bindtap='next' data-eno='0'> 快点找人帮你付款吧</text>
+  </view>
+  <view class='view-eno-bg {{eno==0?"hidden":""}}' bindtap='next' data-eno='0'>
+  </view>
+  <view class='bottom-oy'>
+    <navigator class='btn-oy-sub' open-type='switchTab' url='/pages/index/index'>返回首页</navigator>
+  </view>
 </view>

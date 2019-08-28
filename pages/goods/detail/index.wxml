@@ -19,6 +19,39 @@
             </block>
           </swiper>
         </view>
+        <!-- 秒杀 -->
+        <block wx:for="{{seckill.goods}}" wx:key="" wx:if="{{options.id==item.goodsid}}">
+          <view class='seckill-big' wx:if="{{seckill&&seckill.length!=0&&seckill!=''}}">
+            <view class='seckill-left'>
+              <view class='seckill-left-left'>
+                <view class='seckill-left-left-money'>
+                  <label class='seckill-left-left-fuhao'>￥</label>
+                  {{item.price}}
+                </view>
+                <view class='seckill-left-left-money-right'>
+                  <view class='seckill-left-left-money-border'>{{seckill.title}}</view>
+                  <text class='seckill-left-left-money-text'>￥{{item.marketprice}}</text>
+                </view>
+              </view>
+              <view class='seckill-left-right'>
+                <view class='seckill-left-right-top' wx:if="{{seckill.time.status==0}}">已出售{{item.percent}}%</view>
+                <progress wx:if="{{seckill.time.status==0}}" stroke-width="10" backgroundColor="#ef4f4f" activeColor="#efd74f" percent="{{item.percent}}" class='seckill-left-right-pro'></progress>
+              </view>
+            </view>
+            <view class='seckill-right'>
+              <view class='seckill-right-top'>
+                距{{seckill.time.status==1?"开始":"结束"}}还有
+              </view>
+              <view class='seckill-right-bottom'>
+                <view class='seckill-right-bottom-time'>{{hour>10?"":"0"}}{{hour}}</view>
+                <view class='seckill-right-bottom-fuhao'>:</view>
+                <view class='seckill-right-bottom-time'>{{minute>10?"":"0"}}{{minute}}</view>
+                <view class='seckill-right-bottom-fuhao'>:</view>
+                <view class='seckill-right-bottom-time'>{{second>10?"":"0"}}{{second}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
         <view class='fui-cell-group fui-detail-group'>
           <view class='fui-cell'>
             <view class='fui-cell-text name'>
@@ -367,7 +400,7 @@
           </view>
         </block>
         <view wx:if="{{goods.shopdetail.shopname || goods.shopdetail.logo}}" class='fui-cell-group fui-shop-group'>
-          <navigator wx:if="{{goods['merchid']>0}}" class='fui-list' url='/pages/changce/merch/detail?id={{goods["merchid"]}}'>
+          <navigator wx:if="{{goods['merchid']>0}}" bindtap='store' data-id='{{goods["merchid"]}}' open-type="redirect" class='fui-list' url='/pages/merch/mystore/index?merchid={{goods["merchid"]}}'>
             <view class='fui-list-media'>
               <image src='{{goods.shopdetail.logo}}' lazy-load='true'></image>
             </view>
@@ -394,7 +427,6 @@
           <view class='fui-cell-group'>
             <view class='title'>
               <view class='fui-tab fui-tab-danger' id='tab'>
-
                 <view bindtap='goodsTab' class="item {{tap=='info'?'active':''}}" data-tap='info'>商品详情</view>
                 <block wx:if='{{goods.params.length > 0}}'>
                   <view bindtap='goodsTab' class="item {{tap=='para'?'active':''}}" data-tap='para'>参数</view>
@@ -417,7 +449,7 @@
           <view class='wxParse'>
 
             <!-- <block wx:if="{{goods.content_type==1}}"> -->
-              <template is='wxParse' data='{{ wxParseData:wxParseData.nodes }}' />
+            <template is='wxParse' data='{{ wxParseData:wxParseData.nodes }}' />
             <!-- </block> -->
             <!-- <block wx:if="{{goods.content_type==2}}">
               <template is='xj_wxparse' data='{{...goods}}' />

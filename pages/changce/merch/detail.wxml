@@ -12,7 +12,7 @@
           </view>
       </view>
     </view>
-  </view>
+  </view> 
   <view class='detail-tab'>
     <navigator class="{{isnew == 0 && isrecommand==0 ? 'on' : ''}}" bindtap="clickall">
       <text>{{merch.allgoodsnum}}</text>

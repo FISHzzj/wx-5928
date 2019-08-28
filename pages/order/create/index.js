@@ -1,4 +1,4 @@
-//作者YIFU YUANMA
+ //作者YIFU YUANMA
 var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
     return typeof t
   } :
@@ -236,7 +236,14 @@ Page({
             submit: !0
           }),
           a.post("order/create/submit", s, function(t) {
-            if (e.setData({
+          if (t.status == -1) {
+            return void a.confirm(t.result.message,function(){
+              wx.redirectTo({
+                url: "/pages/order/index"
+              })
+            })
+          }
+           else if(e.setData({
                 submit: !1
               }), 0 != t.error)
               return void a.alert(t.message);

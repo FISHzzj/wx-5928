@@ -11,7 +11,8 @@ Page({
 		back : 0,
 		child : {},
 		parent : {},
-    id:0
+    id: 0,
+    merch: false
 	},
 	tabCategory : function (t) {
 		this.setData({
@@ -42,7 +43,7 @@ Page({
 	getCategory : function () {
 		var q = this;
     var merchid = t.getCache("merchid")
-    if (merchid != "" || merchid != 0) {
+    if (merchid != "" && merchid != 0) {
       wx.hideTabBar()
      q.setData({
         id: merchid
@@ -72,9 +73,30 @@ Page({
       })
     }
 	},
+ 
   onShow: function () {
-    this.getCategory()
-	},
+    var that = this;
+    that.getCategory()
+    e.get("plugins", {}, function (data) {
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].identity == 'merch') {
+          wx.hideTabBar()
+          that.setData({
+            merch: true
+          })
+        }
+      }
+      that.setData({
+        plugins: data
+      })
+    })
+  },
+  onHide: function () {
+    var that = this
+    that.setData({
+      merch: false
+    })
+  },
 	onShareAppMessage : function () {
 		return e.onShareAppMessage()
 	},

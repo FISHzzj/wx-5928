@@ -14,7 +14,7 @@
       </view>
       <view class='xj-cate-all-content'>
         <block wx:for="{{list.category}}" wx:key="asd">
-          <navigator class='xj-cata-content' url='/pages/merch/merchuser/index?cateid=item.id'>
+          <navigator class='xj-cata-content' url='/pages/merch/merchuser/index?cateid={{item.id}}&catename={{item.catename}}'>
             <image src='{{item.thumb}}' style='background:#ccc'></image>
             <view>{{item.catename}}</view>
           </navigator>

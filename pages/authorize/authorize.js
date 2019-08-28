@@ -26,7 +26,7 @@ Page({
   //授权获取用户信息
   onGotUserInfo: function (i) {
     var n = this,
-    a = e.getCache("userinfo");
+      a = e.getCache("userinfo");
     a = i.userInfo;
     if (a && !a.needauth)
       return void (t && "function" == typeof t && t(a));
@@ -42,7 +42,8 @@ Page({
               data: i.detail.encryptedData,
               iv: i.detail.iv,
               sessionKey: o.session_key
-            }, function (e) {
+            }, function (res) {
+              e.setCache("userinfo", res, 7200),
               wx.switchTab({
                 url: '/pages/index/index',
               })

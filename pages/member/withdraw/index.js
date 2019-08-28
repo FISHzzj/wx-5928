@@ -76,6 +76,9 @@ Page({
 				}
 			}))
 	},
+  bankChange:function(e){
+    console.log(e)
+  },
 	allow : function () {
 		var a = this.data.info,
 		e = parseFloat(this.data.money);
@@ -137,8 +140,8 @@ Page({
 	submit : function (a) {
 		var i = this,
       r = this.data;
-    console.log(!r.isSubmit);
-    console.log(!r.disabled);
+    // console.log(!r.isSubmit);
+    // console.log(!r.disabled);
 		if (!r.disabled && !r.isSubmit) {
 			if (r.money <= 0)
 				return void t.toast(i, "请填写提现金额");
@@ -163,7 +166,8 @@ Page({
 				d.alipay = r.realInfo.alipay,
 				d.alipay1 = r.realInfo.alipay1
 			} else if (3 == r.checked.id) {
-				if (n.isEmptyObject(r.bankChecked))
+				// if (n.isEmptyObject(r.bankChecked))
+        if (!r.bankChecked.bankname)
 					return void t.toast(i, "请选择提现银行");
 				if (!r.realInfo.realname)
 					return void t.toast(i, "请填写姓名");
@@ -175,7 +179,8 @@ Page({
 					return void t.toast(i, "两次填写的银行卡号不一致");
 				o += "？姓名:" + r.realInfo.realname + " 银行:" + r.bankChecked.bankname + " 卡号:" + r.realInfo.bankcard,
 				d.realname = r.realInfo.realname,
-				d.bankname = r.realInfo.bankname,
+				// d.bankname = r.realInfo.bankname,
+          d.bankname = r.bankChecked.bankname,
 				d.bankcard = r.realInfo.bankcard,
 				d.bankcard1 = r.realInfo.bankcard1
 			}

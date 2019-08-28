@@ -1,17 +1,17 @@
 <!-- 底部tabbar -->
 <template name="foots">
-<view class='view-tabbar'>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/index/index'>
-    <image class='view-tabbar-image' src='{{home==1?"/static/images/icon-red/home.png":"/static/images/icon/home.png"}}'></image>
-    <view class='view-tabbar-text {{home==1?"redtar":""}}' >首页</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/lists/index'>
-    <image class='view-tabbar-image' src='{{alllist==1?"/static/images/icon-red/cate.png":"/static/images/icon/cate.png"}}'></image>
-    <view class='view-tabbar-text {{alllist==1?"redtar":""}}'>全部商品</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/log/index'>
-    <image class='view-tabbar-image' src='{{my==1?"/static/images/icon-red/people.png":"/static/images/icon/people.png"}}'></image>
-    <view class='view-tabbar-text {{my==1?"redtar":""}}'>我的</view>
-  </navigator>
-</view>
+  <view class='view-tabbar'>
+    <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/index/index'>
+      <image class='view-tabbar-image' src='{{home==1?"/static/images/icon-red/home.png":"/static/images/icon/home.png"}}'></image>
+      <view class='view-tabbar-text {{home==1?"redtar":""}}'>首页</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/lists/index'>
+      <image class='view-tabbar-image' src='{{alllist==1?"/static/images/icon-red/cate.png":"/static/images/icon/cate.png"}}'></image>
+      <view class='view-tabbar-text {{alllist==1?"redtar":""}}'>全部商品</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/creditshop/log/index'>
+      <image class='view-tabbar-image' src='{{my==1?"/static/images/icon-red/people.png":"/static/images/icon/people.png"}}'></image>
+      <view class='view-tabbar-text {{my==1?"redtar":""}}'>我的</view>
+    </navigator>
+  </view>
 </template>

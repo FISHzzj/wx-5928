@@ -1,13 +1,19 @@
 <!--pages/merch/register/index.wxml-->
 <view>
   <view>
-    <image src='http://xcxvip.iiio.top/addons/wx_shop./plugin/app/static/images/regbg.png' mode='widthFix' style='width:100%'></image>
+    <image src='http://xcxvip.iiio.top/addons/wx_shop/plugin/app/static/images/regbg.png' mode='widthFix' style='width:100%'></image>
   </view>
-  <block wx:if="{{lsit.user}}"></block>
+  <block wx:if="{{status==0}}">
+    <view class='xj-content'>
+      <image src='/static/images/icon/wait-128.png'></image>
+      <view style='margin-top:40rpx;font-size:30rpx'>{{list.message}}</view>
+      <navigator open-type='switchTab' url='/pages/index/index'>去商城逛逛</navigator>
+    </view>
+  </block>
   <block wx:else>
     <block wx:if="{{list.reg&&list.reg!=0}}">
       <block wx:if="{{list.reg.status==-1}}">
-        <view style='font-size:30rpx;margin-top:30rpx;background:#ff8000;color:white;padding:10rpx'> 
+        <view style='font-size:30rpx;margin-top:30rpx;background:#ff8000;color:white;padding:10rpx'>
           <view>您的申请被驳回：</view>
           <view>{{list.reg.reason}}</view>
           <view>您也可以修改信息重新提交</view>
@@ -19,6 +25,7 @@
           <view>您也可以修改信息重新提交</view>
         </view>
       </block>
+
     </block>
     <view class='xj-input'>
       <view class="oy_form_list flex flex-ver">
@@ -93,19 +100,19 @@
       </view>
       <view style='font-size:26rpx;color:#999;padding:10rpx'>用于登录多商户后台,请认真填写</view>
     </view>
-<!-- 阅读 -->
-  <block wx:if="{{list.set.open_protocol==1}}">
-            <view style='background:#fff;'>
-              <checkbox-group bindchange='checkChange'>
-                <label>
-                  <checkbox class="fui-checkbox-primary" wx:key="asd">我已经阅读并了解了
-                    <navigator style="color:#337ab7;float:right;">【{{list.apply_set.applytitle}}】</navigator>
-                  </checkbox>
-                </label>
-              </checkbox-group>
-            </view>
-          </block>
-<!-- 提交按钮 -->
+    <!-- 阅读 -->
+    <block wx:if="{{list.set.open_protocol==1}}">
+      <view style='background:#fff;'>
+        <checkbox-group bindchange='checkChange'>
+          <label>
+            <checkbox class="fui-checkbox-primary" wx:key="asd">我已经阅读并了解了
+              <navigator style="color:#337ab7;float:right;">【{{list.apply_set.applytitle}}】</navigator>
+            </checkbox>
+          </label>
+        </checkbox-group>
+      </view>
+    </block>
+    <!-- 提交按钮 -->
     <view class='xj-btn'>
       <button type='warn' form-type='submit' bindtap='submit'> {{list.reg==0||list.reg==""||!list.reg?choose:"重新提交申请"}}</button>
     </view>

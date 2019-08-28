@@ -1,12 +1,14 @@
 @import '../../../utils/Brief/index.wxss';
-.oy-scroll-box{
+
+.oy-scroll-box {
   position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   box-sizing: border-box;
 }
+
 .picker-modal {
   height: auto;
 }
@@ -1421,4 +1423,110 @@ button::after {
 
 .quicbg button .pic1 {
   background: #fff;
+}
+
+/* 秒杀 */
+
+.seckill-right-bottom-fuhao {
+  color: #000;
+  padding: 0 8rpx;
+}
+
+.seckill-right-bottom-time {
+  background: flex;
+  background: #000;
+  width: 35rpx;
+  height: 35rpx;
+  text-align: center;
+  line-height: 35rpx;
+}
+
+.seckill-right-bottom {
+  display: flex;
+}
+
+.seckill-right-top {
+  color: #ef4f4f;
+  padding-bottom: 7rpx;
+}
+
+.seckill-right {
+  background: #ffef32;
+  color: white;
+  font-size: 26rpx;
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seckill-left-right-pro {
+  border: 1px solid #efd74f;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.seckill-left-right-top {
+}
+
+.seckill-left-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+
+.seckill-left-left-money-text {
+  font-size: 30rpx;
+  color: #ddd;
+  text-decoration: line-through;
+}
+
+.seckill-left-left-money-border {
+  border: 1rpx solid white;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  padding: 2rpx 10rpx;
+  width: 150rpx;
+  height: 40rpx;
+  overflow: hidden;
+  empty-cells: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seckill-left-left-money-right {
+}
+
+.seckill-left-left-money {
+  font-size: 80rpx;
+  position: relative;
+  padding-left: 10px;
+  width: 120rpx;
+}
+
+.seckill-left-left {
+  display: flex;
+}
+
+.seckill-left {
+  width: 550rpx;
+  background: #ef4f4f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+
+.seckill-big {
+  display: flex;
+  height: 120rpx;
+}
+
+.seckill-left-left-fuhao {
+  font-size: 45rpx;
+  position: absolute;
+  top: 10rpx;
+  left: -15rpx;
 }

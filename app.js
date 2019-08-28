@@ -49,9 +49,8 @@ App({
 		return t 
 	},
   getUserInfo: function (t, i) {
-    
-    var n = this,
-      a = n.getCache("userinfo");
+    var n = this,  
+    a = n.getCache("userinfo");
     if (a && !a.needauth)
       return void (t && "function" == typeof t && t(a));
     wx.login({
@@ -62,14 +61,20 @@ App({
           code: o.code
         }, function (o) {
           wx.hideLoading();
-          return o.error ? void e.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void e.get("wxapp/check", {
-            openid: o.openid
-          }, function (e) {
-            e.openid = o.openid
-            e.needauth = 1,
-              n.setCache("userinfo", e, 7200),
-              t && "function" == typeof t && t(a)
-          })
+          wx.getUserInfo({
+            success:res => {
+              return o.error ? void e.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void e.get("wxapp/check", {
+                openid: o.openid,
+                avatarurl: res.userInfo.avatarUrl,
+                nickname: res.userInfo.nickName
+              }, function (e) {
+                e.openid = o.openid
+                e.needauth = 1,
+                  n.setCache("userinfo", e, 7200),
+                  t && "function" == typeof t && t(a)
+              })
+            }
+          });
         })
       },
       fail: function () {
@@ -104,16 +109,15 @@ App({
       }
       if (qstring.mid) e.mid = qstring.mid;
     }
-    console.log(e)
 		i = e.mid || "",
 		n = e.merchid || "",
 		"" != a ? ("" != a.mid && void 0 !== a.mid || (t.mid = i), "" != a.merchid && void 0 !== a.merchid || (t.merchid = n)) : (t.mid = i, t.merchid = n),
 		this.setCache("usermid", t, 7200)
 	},
   globalData: {
-    appid: "wxbf1f6c3c0cb1b1f1",
-    api: "https://xcxvip.iiio.top/app/wx_shop_api.php?i=74",
-    approot: "https://xcxvip.iiio.top/addons/wx_shop/",
+    appid: "wx39554e0b58b29a8e",
+    api:  "https://5928.iiio.top/app/wx_shop_api.php?i=96",
+    approot: "https://5928.iiio.top/addons/wx_shop/",
     userInfo: null,
     ver: 315
 	}

@@ -107,23 +107,50 @@
 </block>
 
 <!-- 底部tabbar -->
-<block wx:if="{{id!=0||id!=''}}">
-<view class='view-tabbar'>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none'  url='/pages/merch/index/index?id={{id}}'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
-    <view class='view-tabbar-text' >首页</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/shop/caregory/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon-red/cate.png'></image>
-    <view class='view-tabbar-text'style='color:red'>全部分类</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/member/cart/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/cart.png'></image>
-    <view class='view-tabbar-text'>购物车</view>
-  </navigator>
-   <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/member/index/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
-    <view class='view-tabbar-text'>会员中心</view>
-  </navigator>
-</view>
+
+<block wx:if="{{merch}}">
+  <view class='view-tabbar'>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
+      <view class='view-tabbar-text'>首页</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/shop/caregory/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon-red/cate.png'></image>
+      <view class='view-tabbar-text' style='color:red'>全部分类</view>
+    </navigator>
+    <navigator class='view-tabbar-content'  hover-class='none' url='/pages/merch/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cate.png'></image>
+      <view class='view-tabbar-text'>商家列表</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/cart/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cart.png'></image>
+      <view class='view-tabbar-text'>购物车</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
+      <view class='view-tabbar-text'>会员中心</view>
+    </navigator>
+  </view>
+</block>
+
+
+<block wx:if="{{id!=0&&id!=''}}">
+  <view class='view-tabbar'>
+    <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/merch/mystore/index?merchid={{id}}'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
+      <view class='view-tabbar-text'>首页</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/shop/caregory/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon-red/cate.png'></image>
+      <view class='view-tabbar-text' style='color:red'>全部分类</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/cart/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cart.png'></image>
+      <view class='view-tabbar-text'>购物车</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
+      <view class='view-tabbar-text'>会员中心</view>
+    </navigator>
+  </view>
 </block>

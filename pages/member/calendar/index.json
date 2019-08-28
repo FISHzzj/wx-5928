@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  },
+  "navigationBarTitleText": "积分签到",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

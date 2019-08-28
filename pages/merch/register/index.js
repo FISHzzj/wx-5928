@@ -72,7 +72,8 @@ Page({
     e.get("merch/register", {}, function(data) {
       console.log(data)
       i.setData({
-        list: data.result
+        list: data.result,
+        status: data.status
       })
 
     })

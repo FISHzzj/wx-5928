@@ -24,12 +24,14 @@ Page({
     })
   },
   searchinput: function(e) {
-    console.log(e)
     let that = this;
     that.setData({
       search: e.detail.value
     })
-
+  },
+  store:function(e){
+    let that = this;
+    app.setCache("merchid", e.currentTarget.dataset.id)
   },
   search: function(e) {
     let that = this;

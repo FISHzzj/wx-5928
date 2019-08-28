@@ -1176,3 +1176,78 @@
   font-size: 25rpx;
   color: #999;
 }
+/* 底部tabbar */
+
+.view-tabbar {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  background: #fafafa;
+  padding:10rpx 0;
+  z-index: 100
+}
+
+.view-tabbar-content {
+  width: 20%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-tabbar-image {
+  width: 50rpx !important;
+  height: 50rpx !important;
+}
+
+.view-tabbar-text {
+  font-size: 25rpx;
+  color: #999;
+}
+.bg-view{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.impower-box{
+  position: fixed;
+  width: 60%;
+  height: auto;
+  left: 20%;
+  top: 30%;
+  background: #fff;
+  border-radius: 10rpx;
+}
+.impower-title{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+.impower-content{
+  width: 80%;
+  text-align: center;
+  font-size: 30rpx;
+  margin: 0rpx auto;
+  margin-top: 20rpx;
+}
+.impower-btn{
+  width: 60%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+  margin: 30rpx auto;
+  padding: 0rpx 5rpx;
+  color: #fff;
+  background: #64b3f3;
+}

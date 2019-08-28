@@ -19,6 +19,9 @@ module.exports = {
       s = r.getCache("userinfo"),
       u= r.getCache("usermid"), 
       f = r.getCache("authkey");
+    if (s.openId){
+      s.openid = s.openId
+    }
     n = n || {}, n.comefrom = "wxapp",
       s && ((s.openid).indexOf("sns") == -1 ? n.openid = "sns_wa_" + s.openid : n.openid = s.openid, "cacheset" != t && r.getSet()),
       u && (u.mid != ''? n.mid = u.mid : '', u.merchid != ''?n.merchid = u.merchid:'');

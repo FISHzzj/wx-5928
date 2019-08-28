@@ -1,0 +1,20 @@
+<!--pages/member/calendar/index.wxml-->
+<!--index.wxml-->
+<view class="container-fluid">
+    <navigator url="/pages/member/detailRecords/index" hover-class='none' >
+      <text class="title">详情记录</text>
+    </navigator> 
+    <view class="demo4">
+        <calendar 
+        weeks-type="cn" 
+        cell-size="30" 
+        next="{{false}}" prev="{{false}}" show-more-days="{{true}}"
+        calendar-style="demo4-calendar" 
+        header-style="demo4-header" 
+        board-style="demo4-board" 
+        days-color="{{demo4_days_style}}" 
+        binddayClick="dayClick" 
+        />
+    </view>
+
+</view>

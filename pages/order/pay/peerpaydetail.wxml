@@ -88,4 +88,7 @@
   </view>
   <view class='view-eno-bg {{eno==0?"hidden ":" "}}' bindtap="next " data-eno='0'>
   </view>
+  <!-- <view class='bottom-oy'>
+    <navigator class='btn-oy-sub'>返回首页</navigator>
+  </view> -->
 </view>

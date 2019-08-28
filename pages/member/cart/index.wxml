@@ -30,7 +30,8 @@
                   </view>
                 </block>
               </view>
-              <view class='fui-list-angle'><text class='price'>￥{{val.marketprice}}</text>
+              <view class='fui-list-angle'>
+                <text class='price'>￥{{val.marketprice}}</text>
                 <view bindtap='number' data-id='{{val.id}}' class='fui-number small' data-max='{{val.totalmaxbuy}}' data-min='{{val.minbuy}}' data-optionid='{{val.optionid}}' data-value='{{val.total}}'>
                   <view data-action='minus' class='minus {{val.total <= 1?"disabled":""}}'>-</view>
                   <input disabled name='' type='tel' value='{{val.total}}' class='num shownum'></input>
@@ -71,7 +72,8 @@
               </view>
             </block>
           </view>
-          <view class='fui-list-angle'><text class='price'>￥{{val.marketprice}}</text>
+          <view class='fui-list-angle'>
+            <text class='price'>￥{{val.marketprice}}</text>
             <view bindtap='number' data-id='{{val.id}}' class='fui-number {{small}}' data-max='{{val.totalmaxbuy}}' data-min='{{val.minbuy}}' data-optionid='{{val.optionid}}' data-value='{{val.total}}'>
               <view data-action='minus' class='minus {{val.total <= 1?"disabled":""}}'>-</view>
               <input disabled name='' type='tel' value='{{val.total}}' class='num shownum'></input>
@@ -95,15 +97,19 @@
         <view class='tool'>
           <view class='check'>
             <block wx:if='{{!edit}}'>
-              <label><radio class='zoom-70' color='#ef4f4f' checked='{{ischeckall?1:0}}' bindtap='checkall'></radio>全选</label>
+              <label>
+                <radio class='zoom-70' color='#ef4f4f' checked='{{ischeckall?1:0}}' bindtap='checkall'></radio>全选</label>
             </block>
           </view>
           <block wx:if='{{edit}}'>
-            <label bindtap='editcheckall' data-check='{{editcheckall?1:0}}'><radio class='zoom-70' color='#ef4f4f' checked='{{editcheckall?1:0}}' ></radio>全选</label>
+            <label bindtap='editcheckall' data-check='{{editcheckall?1:0}}'>
+              <radio class='zoom-70' color='#ef4f4f' checked='{{editcheckall?1:0}}'></radio>全选</label>
           </block>
           <view class='text'>
             <block wx:if='{{!edit}}'>
-              <view class='title'>合计：<text class='text-danger'>{{totalprice}}元</text></view>
+              <view class='title'>合计：
+                <text class='text-danger'>{{totalprice}}元</text>
+              </view>
               <view class='subtitle'>不含运费</view>
             </block>
           </view>
@@ -128,28 +134,51 @@
       </view>
     </block>
     <include src='/pages/common/menu.wxml' />
-    </view>
+  </view>
+</block>
+<block wx:if="{{merch}}">
+  <view class='view-tabbar'>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
+      <view class='view-tabbar-text'>首页</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/shop/caregory/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cate.png'></image>
+      <view class='view-tabbar-text'>全部分类</view>
+    </navigator>
+    <navigator class='view-tabbar-content' hover-class='none' url='/pages/merch/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cate.png'></image>
+      <view class='view-tabbar-text'>商家列表</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/cart/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon-red/cart.png'></image>
+      <view class='view-tabbar-text' style='color:red'>购物车</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
+      <view class='view-tabbar-text'>会员中心</view>
+    </navigator>
+  </view>
 </block>
 
-
 <!-- 底部tabbar -->
-<block wx:if="{{id!=0||id!=''}}">
-<view class='view-tabbar'>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none'  url='/pages/merch/index/index?id={{id}}'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
-    <view class='view-tabbar-text' >首页</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/shop/caregory/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/cate.png'></image>
-    <view class='view-tabbar-text'>全部分类</view>
-  </navigator>
-  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/member/cart/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon-red/cart.png'></image>
-    <view class='view-tabbar-text'style='color:red'>购物车</view>
-  </navigator>
-   <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none'  url='/pages/member/index/index'>
-    <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
-    <view class='view-tabbar-text'>会员中心</view>
-  </navigator>
-</view>
+<block wx:if="{{id!=0&&id!=''}}">
+  <view class='view-tabbar'>
+    <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/merch/mystore/index?merchid={{id}}'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/home.png'></image>
+      <view class='view-tabbar-text'>首页</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/shop/caregory/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/cate.png'></image>
+      <view class='view-tabbar-text'>全部分类</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/cart/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon-red/cart.png'></image>
+      <view class='view-tabbar-text' style='color:red'>购物车</view>
+    </navigator>
+    <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/member/index/index'>
+      <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
+      <view class='view-tabbar-text'>会员中心</view>
+    </navigator>
+  </view>
 </block>

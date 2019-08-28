@@ -9,7 +9,8 @@ Page({
     merch_list: !1,
     list: !1,
     edit_list: [],
-    id:0
+    id:0,
+    merch: false
   },
   onLoad: function(e) {
     t.url(e)
@@ -20,15 +21,35 @@ Page({
       })
     }
   },
-  onShow: function() {
-    this.get_cart()
+ 
+  onShow: function () {
+    var that = this;
+    that.get_cart()
+    e.get("plugins", {}, function (data) {
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].identity == 'merch') {
+          wx.hideTabBar()
+          that.setData({
+            merch: true
+          })
+        }
+      }
+      that.setData({
+        plugins: data
+      })
+    })
+  },
+  onHide: function () {
+    var that = this
+    that.setData({
+      merch: false
+    })
   },
   get_cart: function() {
     var q, i = this;
   
     if (i.data.id != "" && i.data.id != 0) {
       wx.hideTabBar()
-    
       e.get("member/cart/get_cart", { merchid: i.data.id }, function (e) {
         q = {
           show: !0,
@@ -42,7 +63,6 @@ Page({
       })
     }
     else{
-      wx.showTabBar()
       e.get("member/cart/get_cart", { merchid: i.data.id }, function (e) {
         t = {
           show: !0,

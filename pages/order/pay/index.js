@@ -115,13 +115,13 @@ Page({
     })
   },
   //
-  // 请人代付  start
-  peerpay: function(t){
-    var t = this;
-    // console.log(t)
-    return void wx.navigateTo({
-      url: "/pages/order/pay/peerpay?id="+t.options.id
-    });
-  }
-  // 请人代付  end
+  // // 请人代付  start
+  // peerpay: function(t){
+  //   var t = this;
+  //   // console.log(t)
+  //   return void wx.navigateTo({
+  //     url: "/pages/order/pay/peerpay?id="+t.options.id
+  //   });
+  // }
+  // // 请人代付  end
 })

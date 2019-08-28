@@ -20,11 +20,11 @@ Page({
    */
   onLoad: function(options) {
     var that = this
-    if (options.id) {
+    if (options.merchid) {
       that.setData({
-        id: options.id
+        id: options.merchid
       })
-      that.getinfo(options.id)
+      that.getinfo(options.merchid)
     }
   },
   getinfo(merchid) {

@@ -87,3 +87,23 @@ progress {
   position: absolute;
   top: 0;
 }
+
+.bottom-oy{
+  text-align: center;
+}
+.btn-oy-sub{
+    background: #f7f7f7;
+    color: #333;
+    border: 1px solid #dfdfdf;
+    margin: 20rpx 40rpx;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 76rpx;
+    padding: 0 24rpx;
+    margin-top: 20rpx;
+  }

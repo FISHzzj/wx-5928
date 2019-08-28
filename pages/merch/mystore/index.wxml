@@ -4,7 +4,7 @@
 <view style='margin-bottom:100rpx'>
   <!-- 搜索 -->
   <template name="search">
-    <block wx:if="{{shop.indexsort.search.visible==1}}">
+    <block wx:if="{{sorts.search.visible==1}}">
       <view style='background:#f7f7f8;padding:30rpx;position:relative;'>
         <image class='view-input-image' src='../../../static/images/icon/search.png' bindtap='search'> </image>
         <input placeholder='输入关键字...' class='view-input' bindinput='searchinput'></input>
@@ -15,7 +15,7 @@
 
   <template name="adv">
     <block wx:if="{{0 != advs.length}}">
-      <block wx:if="{{shop.indexsort.adv.visible==1}}">
+      <block wx:if="{{sorts.adv.visible==1}}">
         <view class='view-swiper'>
           <swiper class="swiper_box" autoplay="true" interval="2000" duration="500" indicator-dots='true' indicator-color='white' indicator-active-color='#ccc' style='width:100%;'>
             <block wx:for-items="{{advs}}" wx:key="">
@@ -33,7 +33,7 @@
 
   <!-- 幻灯片 -->
   <template name="banner">
-    <block wx:if="{{shop.indexsort.banner.visible==1}}">
+    <block wx:if="{{sorts.banner.visible==1}}">
       <view class='adv-image' wx:for="{{banners}}" wx:key="">
         <image src='{{item.thumb}}' mode='widthFix' style='width:100%'></image>
       </view>
@@ -42,7 +42,7 @@
 
   <!-- 跳转导航 -->
   <template name="nav">
-    <block wx:if="{{shop.indexsort.nav.visible==1}}">
+    <block wx:if="{{sorts.nav.visible==1}}">
       <view class='view-nav'>
         <block wx:for-items="{{navs}}" wx:key="">
           <navigator class='view-nav-content' open-type='switchTab' url='/pages/index/index'>
@@ -57,10 +57,10 @@
 
   <!-- 为你推荐 -->
   <template name="goods">
-    <block wx:if="{{shop.indexsort.goods.visible==1}}">
+    <block wx:if="{{sorts.goods.visible==1}}">
       <view class='view-exchange'>
         <view class='view-exchange-allContent'>
-          <block wx:for-items="{{indexrecommands}}" wx:key="">
+          <block wx:for-items="{{recommandlist.list}}" wx:key="">
             <navigator class='view-exchange-content' hover-class='none' url='/pages/goods/detail/index?id={{item.id}}'>
               <image mode='aspectFill' class='view-exchange-image' src='{{item.thumb}}'></image>
               <view class='view-exchange-text' value="{{item.title}}">
@@ -78,15 +78,14 @@
         </view>
       </view>
     </block>
-
   </template>
 
 
 
 
-  <!-- 广告栏 -->
+  <!-- 魔方 -->
   <template name="cube">
-    <block wx:if="{{shop.indexsort.cube.visible==1}}">
+    <block wx:if="{{sorts.cube.visible==1}}">
       <navigator class='avi' wx:if="{{cubes.length==4}}" url="/pages/goods/index/index">
         <view class='avi-left'>
           <image src='{{cubes[0].img}}' mode='widthFix' style='width:100%'></image>
@@ -133,7 +132,7 @@
 
   <!-- 广告 -->
   <template name="notice">
-    <block wx:if="{{shop.indexsort.notice.visible==1}}">
+    <block wx:if="{{sorts.notice.visible==1}}">
 
       <view class='weui-flex'>
         <view class='<flex-head-item item-hotdot'>
@@ -158,7 +157,6 @@
 
   </template>
 
-
   <block wx:if="{{one}}">
     <template is="{{one}}" data="{{...list}}" />
   </block>
@@ -169,7 +167,7 @@
     <template is="{{three}}" data="{{...list}}" />
   </block>
   <block wx:if="{{four}}">
-    <template is="{{four}}" data="{{...list}}" />
+    <template is="{{four}}" data="{{...list }}" />
   </block>
   <block wx:if="{{five}}">
     <template is="{{five}}" data="{{...list}}" />
@@ -192,7 +190,7 @@
 
 <!-- 底部tabbar -->
 <view class='view-tabbar'>
-  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/merch/index/index?id={{id}}'>
+  <navigator class='view-tabbar-content' open-type='redirectTo' hover-class='none' url='/pages/merch/mystore/index?id={{id}}'>
     <image class='view-tabbar-image' src='../../../static/images/icon-red/home.png'></image>
     <view class='view-tabbar-text' style='color:red'>首页</view>
   </navigator>
@@ -208,7 +206,7 @@
     <image class='view-tabbar-image' src='../../../static/images/icon/people.png'></image>
     <view class='view-tabbar-text'>会员中心</view>
   </navigator>
-  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/index/index' bindtap='backshop'>
+  <navigator class='view-tabbar-content' open-type='switchTab' hover-class='none' url='/pages/index/index?back=1' bindtap='backshop'>
     <image class='view-tabbar-image' src='../../../static/images/icon/back.png'></image>
     <view class='view-tabbar-text'>返回商城</view>
   </navigator>

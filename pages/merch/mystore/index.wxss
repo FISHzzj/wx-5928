@@ -64,9 +64,17 @@ page {
 .view-exchange-text {
   height: 60rpx;
   line-height: 60rpx;
-  padding-left: 20rpx;
+  padding: 0 20rpx;
   font-size: 28rpx;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.view-footer {
+  padding: 0 15rpx;
 }
 
 .view-exchange-content label {
@@ -218,4 +226,5 @@ page {
   border-top: 1rpx solid #f8f8f8;
   border-bottom: 1rpx solid #f8f8f8;
   margin-bottom: 30rpx;
+  padding: 0 20rpx;
 }

@@ -12,7 +12,7 @@
               
           </view> 
       </scroll-view>
-      <view class='swiper-container'>
+      <!-- <view class='swiper-container'>
           <swiper autoplay="true" duration="500" class='swiper-main' interval='3000' circular='true' display-multiple-items='3'>
               <block wx:for="{{data.result.advs}}" wx:key="ind">
                   <swiper-item>
@@ -23,7 +23,7 @@
               </block>
               
           </swiper>
-      </view>
+      </view> -->
       <scroll-view scroll-x class='room-container'>
           <view class='scroll-room'>
               <block wx:for="{{data.result.rooms}}" wx:key="i">
@@ -44,16 +44,16 @@
               <block wx:for="{{produList.result.goods}}" wx:key='p'>
                   <view class='fui-list align-start'>
                       <view class='fui-list-media'>
-                        <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&&frommyshop=1' class='nav-img'>
+                        <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&frommyshop=1&taskid={{taskid}}&roomid={{roomid}}&timeid={{timeid}}' class='nav-img'>
                             <image src='{{item.thumb}}'>
                             </image>
                         </navigator>
                       </view>
                       <view class='fui-list-inner'>
-                        <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&&frommyshop=1' class='nav-text'>{{item.title}}</navigator>
+                        <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&frommyshop=1&taskid={{taskid}}&roomid={{roomid}}&timeid={{timeid}}' class='nav-text'>{{item.title}}</navigator>
                         <view class='info'>
                             <view class='button'>
-                              <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&&frommyshop=1' class='{{times.status==1?"btn-success":(item.percent>=100?"btn-success":"")}}'>{{times.status==1?"等待抢购":(item.percent>=100?"已抢空":"去抢购")}}</navigator>
+                              <navigator url='/pages/goods/detail/index?id={{item.goodsid}}&frommyshop=1&taskid={{taskid}}&roomid={{roomid}}&timeid={{timeid}}' class='{{times.status==1?"btn-success":(item.percent>=100?"btn-success":"")}}'>{{times.status==1?"等待抢购":(item.percent>=100?"已抢空":"去抢购")}}</navigator>
                             </view>
                             <view class='price'>¥{{item.price}}</view>
                         </view>

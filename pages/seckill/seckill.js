@@ -48,7 +48,6 @@ Page({
       roomid: that.data.roomid
     }, function (data) {
       wx.hideLoading();
-      console.log(data);
       if (data.status == 1) { 
         that.setData({
           data: data,
@@ -105,7 +104,6 @@ Page({
         taskid:that.data.taskid
     }, function (data) {
       wx.hideLoading();
-        console.log(data);
         that.setData({
           load1:false
         });
@@ -132,7 +130,6 @@ Page({
   },
   clickTime:function(res){//点击时间
     var that = this;
-    console.log(that.data.data.result.times);
     var aa = res.currentTarget.dataset.timeslide;
     this.setData({
       timeSlide: aa,
@@ -143,7 +140,6 @@ Page({
   qiehuan:function(res){//底部切换烂
     var that = this;
     var aa = res.currentTarget.dataset.now;
-    console.log(aa);
     this.setData({
       tarbarNow: aa
     });

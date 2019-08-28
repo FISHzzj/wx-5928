@@ -24,7 +24,7 @@
         </view>
       </navigator>
     </block>
-    <block wx:if='{{acts}}'>
+    <!-- <block wx:if='{{acts}}'>
       <view class='fui-cell-group {{toggleStore?"toggleSend-group":""}}'>
         <view class='fui-cell' bindtap='toggle' data-id='toggleStore' data-type='{{toggleStore}}'>
           <view class='fui-cell-text'>
@@ -46,7 +46,7 @@
       </view>
       </block>
   </view>
-  </block>
+  </block> -->
   <view wx:if="{{wechat.success}}" bindtap='submit' class='btn btn-success block {{disabled?"disabled":""}}'>微信支付</view>
   <view wx:if="{{swift.success}}" bindtap='swift' class='btn btn-primary block {{disabled?"disabled":""}}'>微信支付 (全付通)</view>
   </view>

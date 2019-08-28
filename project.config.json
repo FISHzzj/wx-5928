@@ -8,12 +8,15 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.0",
-	"appid": "wxbf1f6c3c0cb1b1f1",
-	"projectname": "shop",
+	"appid": "wx39554e0b58b29a8e",
+	"projectname": "5928%EF%BC%88%E6%96%B0%EF%BC%89",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -32,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 22,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -171,6 +174,31 @@
 					"name": "exchange",
 					"pathName": "pages/exchange/detail/index",
 					"query": "key=37975448&groupid=34&sta=1"
+				},
+				{
+					"id": 23,
+					"name": "exchange",
+					"pathName": "pages/seckill/seckill",
+					"query": ""
+				},
+				{
+					"id": 24,
+					"name": "exchange",
+					"pathName": "pages/merch/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "积分签到",
+					"pathName": "pages/member/calendar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情记录",
+					"pathName": "pages/member/detailRecords/index",
+					"scene": null
 				}
 			]
 		}

@@ -47,7 +47,7 @@
       </view>
       <block wx:for="{{link.list}}" wx:key="assd">
           <view class='xj-cata-shopcontent'>
-        <navigator class='xj-cate-all-shopcontent'  url='/pages/merch/mystore/index?id={{item.id}}'>
+        <navigator class='xj-cate-all-shopcontent' bindtap='store' data-id='{{item.id}}' url='/pages/merch/mystore/index?merchid={{item.id}}'>
             <image src='{{item.logo}}'></image>
             <view class='xj-cata-center'>
               <view style='font-size:32rpx;font-size:34rpx;'>{{item.merchname}}</view>
@@ -81,10 +81,10 @@
       </view>
     </block>
     <block wx:else>
-      <view style='  display: flex;flex-direction: column;justify-items: center;align-items: center;color:#ccc'>
+      <view style=' display: flex;flex-direction: column;justify-items: center;align-items: center;color:#ccc'>
         <image style='width:300rpx;height:300rpx;margin-bottom:30rpx' src='/static/images/icon/lights-128.png'></image>
         <view>暂时没有商家</view>
-        <button style='width:30%;background:transparent;margin-top:30rpx;color:#666 !important'>到处逛逛</button>
+        <navigator style='width:30%;background:transparent;margin-top:30rpx;color:#666 !important;background:white;border:1rpx solid #ccc;border-radius:10rpx;padding:10rpx 0;text-align:center;' hover-class='none' open-type='switchTab' url='/pages/index/index'>到处逛逛</navigator>
       </view>
     </block>
   </view>

@@ -19,6 +19,10 @@ Page({
     cate: "全部分类",
     sort: "智能排序"
   },
+  store: function (e) {
+    let that = this;
+    app.setCache("merchid", e.currentTarget.dataset.id)
+  },
   // 搜索内容
   searchinput: function (e) {
     var  that = this;
@@ -90,14 +94,18 @@ Page({
    */
   onLoad: function(options) {
     var that = this
-    if (options.cateid) return void that.setData({
-      cateid: options.cateid
+    if (options.catename) that.setData({
+      cate: options.catename
     });
-    if (that.data.keyword) return void that.setData({
+    if (options.cateid)  that.setData({
+      cateid: options.cateid
+    })
+    ;
+    else if (that.data.keyword)  that.setData({
       keyword: that.data.keyword
     });
-    a.get("merch/list/merchuser", {}, function(data) {
-
+    a.get("merch/list/merchuser", { cateid: options.cateid}, function(data) {
+     
       that.setData({
         list: data.result
       })
@@ -109,6 +117,7 @@ Page({
       title: '加载中...',
     })
     that.location()
+   
   },
   // 获取用户经纬度
   location:function(e){

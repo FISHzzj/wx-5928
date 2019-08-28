@@ -4,6 +4,7 @@ Page({
 		route : "member",
 		icons : e.requirejs("icons"),
 		member : {},
+    merch:false,
     id:0
 	},
 	onLoad : function (o) {
@@ -108,7 +109,7 @@ Page({
 	getInfo : function () {
 		var q= this;
     var merchid = e.getCache("merchid")
-    if (merchid != "" || merchid != 0) {
+    if (merchid != "" && merchid != 0) {
       wx.hideTabBar()
       q.setData({
         id: merchid
@@ -124,7 +125,6 @@ Page({
       })
     }
     else{
-      wx.showTabBar()
       r.get("member", { merchid: merchid}, function (r) {
         0 != r.error ? wx.redirectTo({
           url: "/pages/message/auth/index"
@@ -141,11 +141,25 @@ Page({
     var that = this 
 		that.getInfo()
     r.get("plugins", {}, function (data) {
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].identity=='merch'){
+          wx.hideTabBar()
+          that.setData({
+            merch: true
+          })
+        }
+      }
       that.setData({
         plugins: data
       })
     })
 	},
+  onHide: function () {
+    var that = this
+    that.setData({
+      merch: false
+    })
+  },
 	onShareAppMessage : function () {
 		return r.onShareAppMessage()
 	},

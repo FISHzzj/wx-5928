@@ -189,7 +189,7 @@ page{
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  background: #fff;
+  background: #fafafa;
   padding:10rpx 0;
 }
 
