@@ -1,4 +1,6 @@
 // pages/member/calendar/index.js
+var t = getApp(),
+  e = t.requirejs("core");
 const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'June.', 'July.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
 
 Page({
@@ -13,6 +15,8 @@ Page({
     str: MONTHS[new Date().getMonth()], // 月份字符串
 
     demo4_days_style: [],
+    signold_type:'',
+    signold_price:''
 
   },
 
@@ -20,63 +24,145 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const days_count = new Date(this.data.year, this.data.month, 0).getDate();
-    // console.log(days_count);
-    // let demo4_days_style = new Array;
-    // for (let i = 1; i <= days_count; i++) {
-    //   if (i == 3) {
-    //     demo4_days_style.push({
-    //       month: 'current',
-    //       day: i,
-    //       color: 'white',
-    //       background: '#46c4f3'
-    //     });
-    //   } else if (i == 7) {
-    //     demo4_days_style.push({
-    //       month: 'current',
-    //       day: i,
-    //       color: 'white',
-    //       background: '#ffb72b'
-    //     });
-    //   } else if (i == 12 || i == 23 || i == 24) {
-    //     demo4_days_style.push({
-    //       month: 'current',
-    //       day: i,
-    //       color: 'white',
-    //       background: '#865fc1'
-    //     });
-    //   } else if (i == 21 || i == 22) {
-    //     demo4_days_style.push({
-    //       month: 'current',
-    //       day: i,
-    //       color: 'white',
-    //       background: '#eb4986'
-    //     });
-    //   } else {
-    //     demo4_days_style.push({
-    //       month: 'current',
-    //       day: i,
-    //       color: 'white'
-    //     });
-    //   }
-    // }
-    // this.setData({
-    //   demo4_days_style
-    // });
+    var that = this
+    t.url(options),
+      "" == t.getCache("userinfo") && wx.redirectTo({
+        url: "/pages/message/auth/index"
+      })
+    let data = t.getCache("userinfo");
+    e.get("sign", {
+      "openid": data.openid,
+    }, function (e) {
+      console.log(e);
+      if(e.error==0){
+        let signold_type = e.signold_type;//补签扣款方式   0余额，1积分
+        let signold_price = e.signold_price;//补签所需数量
+        let sign_arr = e.sign_arr;
+        let demo4_days_style = that.data.demo4_days_style;
+        var newArray = sign_arr.map(function (currentValue, index, currentArray) {
+          demo4_days_style.push({
+            month: 'current',
+            day: currentValue.day,
+            color: 'white',
+            background: '#46c4f3'
+          });
+        });
+        that.setData({
+          demo4_days_style,
+          signold_type,
+          signold_price
+        });
+      }
+    })
 
   },
-  dayClick: function (event) {
+  // 签到操作
+  qiandao:function(){
+    
+  },
+  // 选择月份
+  dateChange: function (event) {
+    let that = this;
     console.log(event.detail);
-    let dataDay = event.detail.day;
-    let demo4_days_style = this.data.demo4_days_style;
-    demo4_days_style.push({
-      month: 'current',
-      day: dataDay,
-      color: 'white',
-      background: '#46c4f3'
-    });
-    this.setData({
-      demo4_days_style
-    });
+    let res = event.detail;
+    if (res.currentMonth<10){
+      var riqi = res.currentYear + "-" + "0" + res.currentMonth;
+    }else{
+      var riqi = res.currentYear + "-" + res.currentMonth;
+    }
+    console.log(riqi);
+    let data = t.getCache("userinfo");
+    e.get("sign/getCalendar", {
+      "openid": data.openid,
+      "date": riqi
+    }, function (e) {
+      console.log(e);
+      if (e.error == 0){
+        let sign_arr = e.sign_arr;
+        that.setData({
+          demo4_days_style:[]
+        });
+        let demo4_days_style = that.data.demo4_days_style;
+        var newArray = sign_arr.map(function (currentValue, index, currentArray) {
+          if (currentValue.signed==1){
+            demo4_days_style.push({
+              month: 'current',
+              day: currentValue.day,
+              color: 'white',
+              background: '#46c4f3'
+            });
+          }
+        });
+        that.setData({
+          demo4_days_style
+        });
+      }
+    })
+  },
+  //点击签到日期
+  dayClick: function (event) {
+    var that = this;
+    var requ = e;
+    // console.log(event.detail);
+    let res = event.detail;
+    let datayear = res.year;
+    let datamonth = res.month;
+    let dataDay = res.day;
+    let signold_type = that.data.signold_type; //补签扣款方式   0余额，1积分
+    let signold_price = that.data.signold_price; //补签所需金额
+    if (datamonth<10){
+      if (dataDay < 10) {
+        var riqi = datayear + "-" + "0"  + datamonth + "-" + "0" + dataDay;
+      } else {
+        var riqi = datayear + "-" + "0" + datamonth + "-" + dataDay;
+      }
+    }else{
+      if (dataDay < 10) {
+        var riqi = datayear + "-" + datamonth + "-" + "0" + dataDay;
+      } else {
+        var riqi = datayear + "-" + datamonth + "-" + dataDay;
+      }
+    }
+    if (new Date(riqi).getTime() - new Date().getTime() < -86400000){
+      if (signold_type==1){ //积分
+        requ.confirm("补签需扣除50积分，确认补签吗？ ", function () {
+          qiandao();
+        })
+      } else if (signold_type == 0){ //余额
+        requ.confirm("确认补签吗？", function () {
+          qiandao();
+        })
+      }
+     
+    }else{
+      qiandao();
+    }
+ 
+    function qiandao(){
+      let data = t.getCache("userinfo");
+      e.post("sign/dosign", {
+        "openid": data.openid,
+        "date": riqi
+      }, function (e) {
+        console.log(e);
+        if (e.error == 0) {
+          let demo4_days_style = that.data.demo4_days_style;
+          demo4_days_style.push({
+            month: 'current',
+            day: dataDay,
+            color: 'white',
+            background: '#46c4f3'
+          });
+          that.setData({
+            demo4_days_style
+          });
+          let message = e.message;
+          requ.alert(message)
+        } else {
+          let message = e.message;
+          requ.alert(message)
+        }
+      })
+    }
   }
 })

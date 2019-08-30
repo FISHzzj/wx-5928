@@ -19,7 +19,7 @@ page{
   box-sizing: border-box;
   background: #fff;
   border-bottom: 1px solid #eee;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .hs_richang{
   background: #04AB02;
@@ -30,4 +30,9 @@ page{
 }
 .hs_num{
   color:#24B2F4; 
+}
+.hs_nolist{
+  text-align: center;
+  line-height: 40rpx;
+  height: 40rpx;
 }

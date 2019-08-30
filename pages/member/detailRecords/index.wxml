@@ -1,59 +1,13 @@
 <!--pages/member/detailRecords/index.wxml-->
 <view class="hs_container">
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
+  <scroll-view  scroll-y  style="height: {{height?height+'px':'auto'}}" bindscrolltolower="lower" bindscroll="scroll" >
+    <view class="hs_item"  wx:for="{{lists}}" wx:for-index="idx" wx:for-item="item" wx:key="*this">
+      <view class="hs_qinadao">
+        <view>{{item.log}}</view>
+        <view><text class="hs_richang">日常签到</text><text>{{item.date}}</text> </view>
+      </view>
+      <view class="hs_num">+{{item.credit}}</view>
     </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
-  <view class="hs_item">
-    <view class="hs_qinadao">
-      <view>日常签到+100积分</view>
-      <view><text class="hs_richang">日常签到</text><text>2019-08-27 14:10:28</text> </view>
-    </view>
-    <view class="hs_num">+100</view>
-  </view>
+    <view class='hs_nolist' wx:if="{{scrollend}}">没有数据了！</view>
+  </scroll-view>
 </view>
