@@ -124,14 +124,20 @@ Page({
       }
     }
     if (new Date(riqi).getTime() - new Date().getTime() < -86400000){
-      if (signold_type==1){ //积分
-        requ.confirm("补签需扣除50积分，确认补签吗？ ", function () {
+      if (signold_price <= 0) {
+        requ.confirm("确认补签吗？ ", function () {
           qiandao();
         })
-      } else if (signold_type == 0){ //余额
-        requ.confirm("确认补签吗？", function () {
-          qiandao();
-        })
+      } else {
+        if (signold_type == 1) { //积分
+          requ.confirm("补签需扣除" + signold_price + "积分，确认补签吗？ ", function () {
+            qiandao();
+          })
+        } else if (signold_type == 0) { //余额
+          requ.confirm("补签需扣除" + signold_price + "余额，确认补签吗？", function () {
+            qiandao();
+          })
+        }
       }
      
     }else{

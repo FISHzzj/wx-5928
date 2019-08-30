@@ -1,9 +1,7 @@
 <!--pages/member/calendar/index.wxml-->
 <!--index.wxml-->
 <view class="container-fluid">
-    <navigator url="/pages/member/detailRecords/index" hover-class='none' >
-      <text class="title">详情记录</text>
-    </navigator> 
+ 
     <view class="demo4">
         <calendar 
         weeks-type="cn" 
@@ -16,6 +14,9 @@
         binddayClick="dayClick" 
         binddateChange="dateChange" 
         />
+        <navigator url="/pages/member/detailRecords/index" hover-class='none' >
+          <text class="title">详情记录</text>
+        </navigator> 
     </view>
 
 </view>
