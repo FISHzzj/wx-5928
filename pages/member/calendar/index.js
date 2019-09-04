@@ -38,6 +38,7 @@ Page({
         let signold_type = e.signold_type;//补签扣款方式   0余额，1积分
         let signold_price = e.signold_price;//补签所需数量
         let sign_arr = e.sign_arr;
+        // console.log(sign_arr)
         let demo4_days_style = that.data.demo4_days_style;
         var newArray = sign_arr.map(function (currentValue, index, currentArray) {
           demo4_days_style.push({
@@ -150,7 +151,7 @@ Page({
         "openid": data.openid,
         "date": riqi
       }, function (e) {
-        console.log(e);
+        // console.log(e);
         if (e.error == 0) {
           let demo4_days_style = that.data.demo4_days_style;
           demo4_days_style.push({

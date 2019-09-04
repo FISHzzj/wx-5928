@@ -18,5 +18,7 @@
           <text class="title">详情记录</text>
         </navigator> 
     </view>
-
+    <view class="hs_img">
+      <image mode='aspectFill' src="../../img/shuoming.jpg" class="oy_set_img" lazy-load='true'></image>
+    </view>
 </view>
