@@ -171,51 +171,34 @@ Page({
   },
 
 
-
   //授权获取用户信息
   onGotUserInfo: function (i) {
     var n = this,
-      a = e.getCache("userinfo");
-    a = i.userInfo;
-    if (a && !a.needauth)
-      return void (t && "function" == typeof t && t(a));
+      info = e.getCache("userinfo");
+    info = i.userInfo;
+    if (info && !info.needauth)
+      return void (e && "function" == typeof e && e(info));
     if (i.detail.errMsg == 'getUserInfo:ok') {
       wx.login({
         success: function (o) {
-          // console.log(o);
           if (!o.code)
             return void r.alert("获取用户登录态失败:" + o.errMsg);
           r.post("wxapp/login", {
             code: o.code
           }, function (o) {
-            // console.log(o);
-            // return;
             return o.error ? void r.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void r.get("wxapp/auth", {
               data: i.detail.encryptedData,
               iv: i.detail.iv,
               sessionKey: o.session_key
-            }, function (e) {
-              // console.log(e);
-              let openId = e.openId
+            }, function (res) {
               n.setData({
-                openId: openId
+                showBg: false
               })
+              e.setCache("userinfo", res, 7200),
               n.getInfo();
-              r.get("plugins", {}, function (data) {
-                for (var i = 0; i < data.length; i++) {
-                  if (data[i].identity == 'merch') {
-                    wx.hideTabBar()
-                    n.setData({
-                      merch: true,
-
-                    })
-                  }
-                }
-                n.setData({
-                  plugins: data,
-                  openId: openId
-                })
-              })
+                // wx.switchTab({
+                //   url: '/pages/index/index',
+                // })
             })
           })
         }
@@ -223,4 +206,58 @@ Page({
     }
   },
 
+
+
+
+
+  //授权获取用户信息
+  // onGotUserInfo: function (i) {
+  //   var n = this,
+  //     a = e.getCache("userinfo");
+  //   a = i.userInfo;
+  //   if (a && !a.needauth)
+  //     return void (t && "function" == typeof t && t(a));
+  //   if (i.detail.errMsg == 'getUserInfo:ok') {
+  //     wx.login({
+  //       success: function (o) {
+  //         // console.log(o);
+  //         if (!o.code)
+  //           return void r.alert("获取用户登录态失败:" + o.errMsg);
+  //         r.post("wxapp/login", {
+  //           code: o.code
+  //         }, function (o) {
+  //           // console.log(o);
+  //           // return;
+  //           return o.error ? void r.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void r.get("wxapp/auth", {
+  //             data: i.detail.encryptedData,
+  //             iv: i.detail.iv,
+  //             sessionKey: o.session_key
+  //           }, function (e) {
+  //             // console.log(e);
+  //             let openId = e.openId
+  //             n.setData({
+  //               openId: openId
+  //             })
+  //             n.getInfo();
+  //             r.get("plugins", {}, function (data) {
+  //               for (var i = 0; i < data.length; i++) {
+  //                 if (data[i].identity == 'merch') {
+  //                   wx.hideTabBar()
+  //                   n.setData({
+  //                     merch: true,
+
+  //                   })
+  //                 }
+  //               }
+  //               n.setData({
+  //                 plugins: data,
+  //                 openId: openId
+  //               })
+  //             })
+  //           })
+  //         })
+  //       }
+  //     })
+  //   }
+  // },
 })

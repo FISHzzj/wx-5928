@@ -219,13 +219,18 @@
           <view class="oy_center_item_title">兑换中心</view>
         </view>
       </navigator> -->
-      <!-- <navigator url="/pages/seckill/seckill" class="oy_center_item1" hover-class='none'>
+      <navigator url="/pages/seckill/seckill" class="oy_center_item1" hover-class='none'>
         <view class="flex flex-col flex-center oy_center_item_main">
           <image mode="aspectFill" src="../../img/GIS-time.png" class="oy_item_icon" lazy-load='true'></image>
           <view class="oy_center_item_title">整点抢购</view>
         </view>
-      </navigator> -->
-
+      </navigator>
+      <navigator url="/pages/member/calendar/index" class="oy_center_item1" hover-class='none'>
+        <view class="flex flex-col flex-center oy_center_item_main">
+          <image mode="aspectFill" src="../../img/GIS-time.png" class="oy_item_icon" lazy-load='true'></image>
+          <view class="oy_center_item_title">积分签到</view>
+        </view>
+      </navigator>
       <navigator url="/pages/member/info/index" class="oy_center_item1" hover-class='none' wx:if='{{member["customer"] == "1" }}'>
         <view class="flex flex-col flex-center oy_center_item_main">
           <image mode="aspectFill" src="../../img/oy_data@2x.png" class="oy_item_icon" lazy-load='true'></image>

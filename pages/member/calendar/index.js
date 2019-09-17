@@ -25,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    console.log(t.getCache("userinfo"));
     t.url(options),
       "" == t.getCache("userinfo") && wx.redirectTo({
         url: "/pages/message/auth/index"
