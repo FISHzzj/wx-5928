@@ -5,6 +5,7 @@
     <view class='impower-title'>用户信息授权</view>
     <view class='impower-content'>本页面需要获取您的昵称等公开信息</view>
     <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" withCredentials="true" class="impower-btn">授权登录</button>
+    <button bindtap="setLoading" withCredentials="true" class="impower-btn">取消登录</button>
   </view>
 </view>
 

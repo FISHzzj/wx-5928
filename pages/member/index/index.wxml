@@ -1,8 +1,9 @@
-<block wx:if='{{!show}}'>
+<!-- <block wx:if='{{!show}}'>
   <loading>加载中...</loading>
-</block>
+</block> -->
 <!--pages/center/index.wxml-->
-<block wx:if='{{show}}'>
+ <!-- wx:if='{{show}}' -->
+<block>
   <view>
     <view class="oy_center_head flex">
       <view class="flex-1 flex flex-ver">
@@ -11,7 +12,7 @@
           <view class="oy_user_name">{{member.nickname || "未更新用户信息"}}</view>
           <!-- <view class="oy_user_lv">ID:cxxxx_5444</view> -->
           <view class="oy_user_lv">会员等级：{{member.levelname}}</view>
-          <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" style="padding-left: 0;padding-right: 0;font-size: 12px;width: 85px;margin-left: 0;margin-right: 0;margin-top: 5px;" wx:if='{{!member.nickname}}'>获取用户信息</button> -->
+          <button open-type="getUserInfo"  withCredentials="true" bindgetuserinfo="onGotUserInfo" style="padding-left: 0;padding-right: 0;font-size: 12px;width: 85px;margin-left: 0;margin-right: 0;margin-top: 5px;background:#FCCF81;color:#fff;" wx:if='{{!member.nickname}}'>授权登录</button>
         </view>
       </view>
       <view class="flex flex-jcfe">
@@ -218,18 +219,13 @@
           <view class="oy_center_item_title">兑换中心</view>
         </view>
       </navigator> -->
-      <navigator url="/pages/seckill/seckill" class="oy_center_item1" hover-class='none'>
+      <!-- <navigator url="/pages/seckill/seckill" class="oy_center_item1" hover-class='none'>
         <view class="flex flex-col flex-center oy_center_item_main">
           <image mode="aspectFill" src="../../img/GIS-time.png" class="oy_item_icon" lazy-load='true'></image>
           <view class="oy_center_item_title">整点抢购</view>
         </view>
-      </navigator>
-      <navigator url="/pages/member/calendar/index" class="oy_center_item1" hover-class='none'>
-        <view class="flex flex-col flex-center oy_center_item_main">
-          <image mode="aspectFill" src="../../img/GIS-time.png" class="oy_item_icon" lazy-load='true'></image>
-          <view class="oy_center_item_title">积分签到</view>
-        </view>
-      </navigator>
+      </navigator> -->
+
       <navigator url="/pages/member/info/index" class="oy_center_item1" hover-class='none' wx:if='{{member["customer"] == "1" }}'>
         <view class="flex flex-col flex-center oy_center_item_main">
           <image mode="aspectFill" src="../../img/oy_data@2x.png" class="oy_item_icon" lazy-load='true'></image>
@@ -276,11 +272,13 @@
     <view wx:if='{{member["customer"] == "1"}}' class="quic">
       <view class='info'>
         <view class="quicbg">
-          <button open-type="contact" MsgType="miniprogrampage" send-message-title="{{member.nickname}}" send-message-img="" show-message-card="true">
+          <button open-type="contact" MsgType="miniprogrampage" send-message-title="{{member.nickname}}" send-message-img="" show-message-card="true" name="客服">
             <view class="pic" style="{{member.customercolor?'background:'+member.customercolor:''}}">
               <image class='icon' src='{{icons["service"]}}' lazy-load='true'></image>
+              
             </view>
           </button>
+        <font class="oy_money oy_center_item_title" >商城客服</font>
         </view>
       </view>
     </view>

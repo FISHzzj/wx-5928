@@ -147,7 +147,7 @@ Page({
         wx.hideLoading()
         if (!res.authSetting['scope.userInfo']) {
           that.setData({
-            showBg:true
+            showBg:false
           })
           // wx.redirectTo({
           //   url: '/pages/authorize/authorize',
@@ -271,4 +271,9 @@ Page({
       })
     }
   },
+  setLoading:function(){
+    this.setData({
+      showBg: false
+    })
+  }
 })
