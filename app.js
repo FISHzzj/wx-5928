@@ -116,8 +116,8 @@ App({
 	},
   globalData: {
     appid: "wx39554e0b58b29a8e",
-    api:  "https://5928.iiio.top/app/wx_shop_api.php?i=96",
-    approot: "https://5928.iiio.top/addons/wx_shop/",
+    api:  "https://www.cyou1688.cn/app/wx_shop_api.php?i=96",
+    approot: "https://www.cyou1688.cn/addons/wx_shop/",
     userInfo: null,
     ver: 315
 	}

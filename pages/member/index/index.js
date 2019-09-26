@@ -7,8 +7,25 @@ Page({
     merch: false,
     id: 0,
     openId: "",
+    mids:''
   },
-  onLoad: function (o) {
+  onLoad: function (options) {
+    var that = this;
+    console.log(e.globalData.isSaveRecord );
+    let mids = e.globalData.isSaveRecord 
+    if (mids){
+      this.setData({
+        mids: mids
+      })
+    }
+
+
+    let userinfo = e.getCache("userinfo");
+    // console.log(userinfo)
+    if (userinfo.openId) {
+      that.getInfo();
+    }
+
     // var that = this 
 
     // e.url(o),
@@ -189,7 +206,8 @@ Page({
             return o.error ? void r.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void r.get("wxapp/auth", {
               data: i.detail.encryptedData,
               iv: i.detail.iv,
-              sessionKey: o.session_key
+              sessionKey: o.session_key,
+              mids:n.data.mids
             }, function (res) {
               n.setData({
                 showBg: false

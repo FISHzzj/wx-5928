@@ -726,8 +726,8 @@
               </button>
             </navigator>
 
-            <navigator openType='switchTab' url='/pages/member/index/index'>
-              <button animation="{{animationData2}}">
+            <navigator >
+              <button animation="{{animationData2}}" bindtap="setPlain">
                 <view wx:if="{{goods.navbar==1}}" class="name">个人中心</view>
                 <view class="pic{{goods.navbar==1?' pic1':''}}">
                   <image src="/static/images/icon/my.png" lazy-load='true'></image>
@@ -803,4 +803,9 @@
       </view>
     </view>
   </block>
+  <view class="hs_guding" wx:if="{{showalert}}" bindtap="hideClick">
+    <view class="hs_juzhong">
+       请返回页面点击-<view style="color:red">快捷导航</view>点击-<view style="color:red">人像按钮</view>进入<view style="color:red">会员中心</view>授权登录
+    </view>
+  </view>
 </scroll-view>

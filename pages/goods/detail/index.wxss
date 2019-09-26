@@ -1530,3 +1530,26 @@ button::after {
   top: 10rpx;
   left: -15rpx;
 }
+.hs_guding{
+  position: fixed;
+  top: 30%;
+  left: 10%;
+  right: 0;
+  height: 40%;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: #fff;
+}
+.hs_juzhong{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
