@@ -49,38 +49,38 @@ App({
 		return t 
 	},
   getUserInfo: function (t, i) {
-    var n = this,  
-    a = n.getCache("userinfo");
-    if (a && !a.needauth)
-      return void (t && "function" == typeof t && t(a));
-    wx.login({
-      success: function (o) {
-        if (!o.code)
-          return void e.alert("获取用户登录态失败:" + o.errMsg);
-        e.post("wxapp/login", {
-          code: o.code
-        }, function (o) {
-          wx.hideLoading();
-          wx.getUserInfo({
-            success:res => {
-              return o.error ? void e.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void e.get("wxapp/check", {
-                openid: o.openid,
-                avatarurl: res.userInfo.avatarUrl,
-                nickname: res.userInfo.nickName
-              }, function (e) {
-                e.openid = o.openid
-                e.needauth = 1,
-                  n.setCache("userinfo", e, 7200),
-                  t && "function" == typeof t && t(a)
-              })
-            }
-          });
-        })
-      },
-      fail: function () {
-        e.alert("获取用户登录态失败:" + o.message)
-      }
-    })
+    // var n = this,  
+    // a = n.getCache("userinfo");
+    // if (a && !a.needauth)
+    //   return void (t && "function" == typeof t && t(a));
+    // wx.login({
+    //   success: function (o) {
+    //     if (!o.code)
+    //       return void e.alert("获取用户登录态失败:" + o.errMsg);
+    //     e.post("wxapp/login", {
+    //       code: o.code
+    //     }, function (o) {
+    //       wx.hideLoading();
+    //       wx.getUserInfo({
+    //         success:res => {
+    //           return o.error ? void e.alert("获取用户登录态失败:" + o.message) : o.isclose && i && "function" == typeof i ? void i(o.closetext, !0) : void e.get("wxapp/check", {
+    //             openid: o.openid,
+    //             avatarurl: res.userInfo.avatarUrl,
+    //             nickname: res.userInfo.nickName
+    //           }, function (e) {
+    //             e.openid = o.openid
+    //             e.needauth = 1,
+    //               n.setCache("userinfo", e, 7200),
+    //               t && "function" == typeof t && t(a)
+    //           })
+    //         }
+    //       });
+    //     })
+    //   },
+    //   fail: function () {
+    //     e.alert("获取用户登录态失败:" + o.message)
+    //   }
+    // })
   },
 	getSet : function () {
 		var t = this;

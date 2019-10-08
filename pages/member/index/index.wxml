@@ -12,7 +12,7 @@
           <view class="oy_user_name">{{member.nickname || "未更新用户信息"}}</view>
           <!-- <view class="oy_user_lv">ID:cxxxx_5444</view> -->
           <view class="oy_user_lv">会员等级：{{member.levelname}}</view>
-          <button open-type="getUserInfo"  withCredentials="true" bindgetuserinfo="onGotUserInfo" style="padding-left: 0;padding-right: 0;font-size: 12px;width: 85px;margin-left: 0;margin-right: 0;margin-top: 5px;background:#FCCF81;color:#fff;" wx:if='{{!member.nickname}}'>授权登录</button>
+          <button open-type="getUserInfo"  withCredentials="true" bindgetuserinfo="onGotUserInfo" style="padding-left: 0;padding-right: 0;font-size: 12px;width: 85px;margin-left: 0;margin-right: 0;margin-top: 5px;background:#FCCF81;color:#fff;" wx:if='{{!member.avatar}}'>授权登录</button>
         </view>
       </view>
       <view class="flex flex-jcfe">

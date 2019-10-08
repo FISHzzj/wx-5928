@@ -136,7 +136,6 @@ Page({
         id: merchid
       })
       r.get("member", { merchid: merchid }, function (r) {
-        // console.log(r);
         0 != r.error ? wx.redirectTo({
           url: "/pages/message/auth/index"
         }) : q.setData({
